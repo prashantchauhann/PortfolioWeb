@@ -116,7 +116,18 @@ function createSkillBadgeGlow(element) {
 }
 
 // Skill badges interaction
+const navToggle = document.querySelector('.nav-toggle');
 const navLinks = document.querySelectorAll('.nav-links a');
+const navLinksContainer = document.querySelector('.nav-links');
+
+if (navToggle && navLinksContainer) {
+    navToggle.addEventListener('click', () => {
+        const isOpen = navLinksContainer.classList.toggle('open');
+        navToggle.classList.toggle('open', isOpen);
+        navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+}
+
 navLinks.forEach(link => {
     link.addEventListener('mouseenter', (e) => {
         createNavGlitter(e.target);
@@ -124,6 +135,11 @@ navLinks.forEach(link => {
     
     link.addEventListener('click', (e) => {
         createNavBurst(e.target);
+        if (navLinksContainer && navToggle) {
+            navLinksContainer.classList.remove('open');
+            navToggle.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+        }
     });
 });
 
