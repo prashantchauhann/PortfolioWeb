@@ -1059,6 +1059,15 @@ footer {
 }
 
 /* --- RESPONSIVE --- */
+/* Tablet and larger mobile devices */
+@media (max-width: 1024px) {
+    .hero-title { font-size: 2.8rem; }
+    .hero-desc { font-size: 1.1rem; }
+    .section-title { font-size: 2.2rem; }
+    section { padding: 80px 5%; }
+}
+
+/* Mobile devices */
 @media (max-width: 768px) {
     nav {
         padding: 1rem 5%;
@@ -1077,12 +1086,18 @@ footer {
         gap: 1.5rem;
         padding: 1.5rem 0 2rem;
         background: rgba(15, 23, 42, 0.98);
+        backdrop-filter: blur(10px);
         box-shadow: 0 25px 55px rgba(0, 0, 0, 0.35);
         border-top: 1px solid rgba(14, 165, 233, 0.15);
         z-index: 999;
+        opacity: 0;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
     }
     .nav-links.open {
         display: flex;
+        opacity: 1;
+        transform: translateY(0);
     }
     .nav-links li {
         width: 100%;
@@ -1092,18 +1107,167 @@ footer {
         text-align: center;
         padding: 0.85rem 0;
         letter-spacing: 1px;
+        font-size: 0.9rem;
     }
-    .hero-title { font-size: 2.3rem; line-height: 1.15; }
-    .hero-copy { text-align: center; }
-    .hero-desc { max-width: 100%; margin: 0 auto 1.5rem; font-size: 1rem; }
-    .hero-buttons { flex-direction: column; align-items: center; }
-    .hero-grid, .hero-features, .skills-grid, .projects-grid { grid-template-columns: 1fr; }
+
+    /* Reduce section spacing on mobile */
+    section {
+        padding: 50px 4%;
+        min-height: auto; /* Remove full viewport height */
+        margin-bottom: 2rem; /* Add small gap between sections */
+    }
+
+    #home {
+        min-height: auto; /* Allow home section to be shorter on mobile */
+        padding-top: 6rem;
+        margin-top: 20px;
+    }
+
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+
+    .hero-title {
+        font-size: 2.3rem;
+        line-height: 1.15;
+    }
+    .hero-copy {
+        text-align: center;
+    }
+    .hero-desc {
+        max-width: 100%;
+        margin: 0 auto 1.5rem;
+        font-size: 1rem;
+        line-height: 1.4;
+    }
+    .hero-buttons {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .hero-card {
+        padding: 1.5rem;
+    }
+    .hero-card h2 {
+        font-size: 1.1rem;
+        line-height: 1.3;
+    }
+    .hero-grid,
+    .hero-features,
+    .skills-grid,
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
     .hero-grid { gap: 1.5rem; }
-    .about-content { flex-direction: column; text-align: center; padding: 2rem; }
-    .about-image-container { margin: 0 auto; }
-    .image-frame { width: 260px; height: 260px; }
-    section { padding: 70px 4%; }
-    .contact-links { flex-direction: column; align-items: center; gap: 1rem; }
-    .hero-stats { grid-template-columns: 1fr; }
-    .btn { width: auto; }
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+        padding: 1rem;
+        gap: 2rem;
+    }
+    .about-image-container {
+        margin: 0 auto;
+    }
+    .image-frame {
+        width: 220px;
+        height: 220px;
+    }
+    .contact-links {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+    }
+    .hero-stats {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    .btn {
+        width: auto;
+        padding: 0.8rem 1.5rem;
+        font-size: 0.9rem;
+    }
+    .card {
+        padding: 1.5rem;
+    }
+    .skills-badges {
+        justify-content: center;
+        gap: 0.5rem;
+    }
+    .skill-badge {
+        font-size: 0.8rem;
+        padding: 0.4rem 0.8rem;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    nav {
+        padding: 0.8rem 4%;
+    }
+    .logo {
+        width: 50px;
+        height: 50px;
+        font-size: 1.3rem;
+    }
+    .logo-container {
+        font-size: 1.5rem;
+    }
+    .nav-toggle {
+        width: 35px;
+        height: 35px;
+    }
+
+    section {
+        padding: 40px 4%;
+        margin-bottom: 1rem;
+    }
+
+    #home {
+        padding-top: 5rem;
+        margin-top: 10px;
+    }
+
+    .section-title {
+        font-size: 1.8rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+    .hero-subtitle {
+        font-size: 0.9rem;
+    }
+    .hero-desc {
+        font-size: 0.95rem;
+    }
+    .hero-buttons {
+        gap: 0.8rem;
+    }
+    .hero-grid { gap: 1rem; }
+    .about-content { gap: 1.5rem; }
+    .image-frame {
+        width: 180px;
+        height: 180px;
+    }
+    .card {
+        padding: 1.2rem;
+    }
+    .skills-badges {
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+    .skill-badge {
+        font-size: 0.75rem;
+        padding: 0.3rem 0.6rem;
+    }
+    .contact-box {
+        padding: 1.5rem;
+    }
+    .footer-content {
+        font-size: 0.85rem;
+        padding: 1rem;
+    }
 }
