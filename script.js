@@ -125,6 +125,29 @@ if (navToggle && navLinksContainer) {
         const isOpen = navLinksContainer.classList.toggle('open');
         navToggle.classList.toggle('open', isOpen);
         navToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+
+        // Prevent body scroll when mobile menu is open
+        document.body.style.overflow = isOpen ? 'hidden' : '';
+    });
+
+    // Close mobile menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!navToggle.contains(e.target) && !navLinksContainer.contains(e.target) && navLinksContainer.classList.contains('open')) {
+            navLinksContainer.classList.remove('open');
+            navToggle.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+    });
+
+    // Close mobile menu on window resize to larger screens
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 768 && navLinksContainer.classList.contains('open')) {
+            navLinksContainer.classList.remove('open');
+            navToggle.classList.remove('open');
+            navToggle.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
     });
 }
 
